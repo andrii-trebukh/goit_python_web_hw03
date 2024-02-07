@@ -62,7 +62,12 @@ class Sorter():
                 thread.start()
                 threads.append(thread)
             else:
-                self.smart_mv(item, self.path_by_filetype(item))
+                thread = Thread(
+                    target=self.smart_mv,
+                    args=(item, self.path_by_filetype(item))
+                )
+                thread.start()
+                threads.append(thread)
         [el.join() for el in threads]
         if path is not self.__path:
             path.rmdir()

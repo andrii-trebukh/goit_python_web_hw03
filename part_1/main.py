@@ -1,18 +1,18 @@
-from sys import argv
+import sys
 from sorter import Sorter
 
 
 def usage():
     print("Usage: python3 main.py DIR_PATH")
-    exit(1)
+    sys.exit(1)
 
 
 def main():
-    if len(argv) != 2:
+    if len(sys.argv) != 2:
         usage()
 
     try:
-        sorter = Sorter(argv[1])
+        sorter = Sorter(sys.argv[1])
     except FileNotFoundError as err:
         print(err)
         usage()
